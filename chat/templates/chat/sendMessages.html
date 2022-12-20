@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<h2>send message to {{user}}</h2>
+
+{% for message in messages  %}
+{% if message.sender == request.user and message.receiver == user  or message.sender == user and message.receiver == request.user%}
+<p>{{message}} -{{message.sender}}<p>
+{% endif %}
+{% endfor %}
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="send">
+</form>
+{% endblock content %}

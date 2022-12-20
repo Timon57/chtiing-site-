@@ -6,5 +6,6 @@ urlpatterns = [
     path('login',views.loginPage,name='login'),
     path('logout',views.logoutPage,name='logout'),
     path('register',views.registerPage,name='register'),
+    path('sendmessage/<str:pk>',views.sendMessage,name='send-message')
 
 ]

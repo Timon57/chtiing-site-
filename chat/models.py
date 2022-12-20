@@ -11,7 +11,9 @@ class Profile(models.Model):
 
 class Message(models.Model):
     body = models.TextField()
-    owner = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    #related_name is for reverse relation with User (in place user_set,use related_name)
+    sender = models.ForeignKey(User,related_name='sentmessages',on_delete=models.SET_NULL,null=True)
+    receiver = models.ForeignKey(User,related_name='receivedmessages',on_delete=models.SET_NULL,null=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

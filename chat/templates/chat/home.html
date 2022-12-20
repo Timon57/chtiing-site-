@@ -1,8 +1,13 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>home</h1>
-{%if user.is_authecticated%}
-<h2>welcome{{user}}</h2>
+{% if user.is_authenticated %}
+    <h1>Welcome {{request.user}}</h1>
+{% else %}
+    <h1>welcome</h1>
 {% endif %}
+<h2>Send message to</h2>
+{% for user in users %}
+    <p><a href="{% url 'send-message' user.id %}">{{user.username}}</a><p>
+{% endfor %}
 {% endblock content %}
