@@ -1,10 +1,29 @@
-<h1>login</h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    <label>Username:</label>
-    <input name="username" type="text"><br>
-    <label>Password:</label>
-    <input type="password" name="password"><br>
-    <input type="submit" value="Log In">
-</form>
-<h3>Doesn't have an account yet? <a href="{% url 'register' %}">Register</a></h3>
+{% extends 'main.html' %}
+{% block content %}
+
+{% for message in messages %}
+    <h3 class="alert alert-success">{{message}}</h3>
+  {% endfor %}
+<div class="container">
+  
+    <form action="" method="POST">
+        {% csrf_token %}
+
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" name="username">
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" name="password">
+        <label for="floatingPassword">Password</label>
+      </div>
+  
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+      <h3 class="h3 mb-3 fw-normal">Doesn't have an account yet? <a href="{% url 'register' %}">Register</a></h3>
+    </form>
+</div>
+    
+
+{% endblock content %}

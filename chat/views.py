@@ -5,6 +5,7 @@ from .forms import SignInForm,MessageForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.contrib import messages
 def home(request):
     users = User.objects.all()
     context = {
@@ -18,6 +19,7 @@ def registerPage(request):
         form = SignInForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request,("sign up successfull"))
             return redirect('login')
     context = {
         'form':form
