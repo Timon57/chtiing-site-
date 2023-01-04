@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<div class="profile-container">
+  <h2>Your profile</h2>
+  <img src="{% static 'images/images/pic1.jpg' %}" alt="Profile Image" class="profile-image">
+  <p>{{user.profile_user}}</p>
+  <div class="profile-name">{{request.user.username}}</div>
+  <div class="profile-info">
+    <div><i class="fas fa-envelope"></i>{{request.user.email}}</div>
+  </div>
+</div>
+{% else %}
+    <h1>Welcome To Yellow</h1>
+{% endif %}
+{% endblock %}

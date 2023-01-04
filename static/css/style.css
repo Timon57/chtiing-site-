@@ -1,5 +1,5 @@
 body{
-    background-color: #D2FF07;
+    background-color: #8d9a7b;
 }
 .container{
     margin-top:10px;
@@ -13,3 +13,38 @@ body{
 a{
     text-decoration: none;
 }
+
+.input-group rounded{
+    float: right;
+    margin: 40px;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .profile-image {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  .profile-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .profile-info div {
+    margin: 0 10px;
+  }
+  .profile-info i {
+    font-size: 18px;
+    margin-right: 5px;
+  }

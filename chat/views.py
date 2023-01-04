@@ -6,12 +6,18 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-def home(request):
-    users = User.objects.all()
+
+
+
+def Home(request):
+    return render(request,'chat/home.html')
+
+def UserProfile(request,pk):
+    user = User.objects.get(id=pk)
     context = {
-        'users':users
+        'profile':user
     }
-    return render(request,'chat/home.html',context)
+    return render(request,'chat/profile.html',context)
 
 def registerPage(request):
     form = SignInForm
@@ -33,7 +39,7 @@ def loginPage(request):
         user = authenticate(request,username=username,password=passsword)
         if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('user-profile',pk=request.user.id)
     context = {
     }
     return render(request,'chat/login.html',context)
@@ -43,6 +49,13 @@ def logoutPage(request):
         logout(request)
         return redirect('home')
     return render(request,'chat/logout.html')
+
+def userMessage(request):
+    users = User.objects.all()
+    context = {
+        'users':users
+    }
+    return render(request,'chat/messages.html',context)
 
 def sendMessage(request,pk):
     user = User.objects.get(id=pk)
@@ -61,6 +74,5 @@ def sendMessage(request,pk):
         'messages':messages,
     }
     return render(request,'chat/sendMessages.html',context)
-
 
         

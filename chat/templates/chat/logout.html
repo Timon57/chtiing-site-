@@ -1,7 +1,19 @@
-<h2>Are you sure you want to logout</h2>
-<form method="POST" action="">
-    {% csrf_token %}
-    <input type="submit" value="submit">
-</form>
-<a href="{% url 'home' %}">Go Back</a>
+{% extends 'main.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="container">
+    <h2>Are you sure you want to logout</h2>
+  
+    <form action="" method="POST">
+        {% csrf_token %}
+
+    <input type="submit" value="submit" class="form-control" id="floatingPassword">
+    </form>
+    <p><a href="{% url 'home' %}">Go Back</a></p>
+</div>
+{% else %}
+<p>You need to login first</p>
+{% endif %}
+{% endblock %}
 

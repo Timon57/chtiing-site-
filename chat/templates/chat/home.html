@@ -1,17 +1,10 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>Welcome {{request.user}}</h1>
-    <h2>Send message to</h2>
 
-{% for user in users %}
-    {% if request.user.username != user.username %}
-        <p><a href="{% url 'send-message' user.id %}">{{user.username}}</a><p>
-    {% endif %}
-{% endfor %}
+  <h2>Hello {{request.user}}</h2>
 {% else %}
     <h1>Welcome To Yellow</h1>
 {% endif %}
-
-{% endblock content %}
+{% endblock %}
